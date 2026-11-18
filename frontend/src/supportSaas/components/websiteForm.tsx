@@ -11,6 +11,7 @@ import useCustomerAction from '../hooks/useCustomerAction';
 import formatCustomerDate from '../lib/formatCustomerDate';
 import type { Workspace } from '../types';
 import CustomerError from './customerError';
+import SetupTimingNotice from './setupTimingNotice';
 
 /** Collects one website URL and exposes the native ingestion lifecycle through the scoped service. */
 export default function WebsiteForm({
@@ -42,6 +43,7 @@ export default function WebsiteForm({
         {t(`supportCustomer.setup.${workspace.status}`)}
       </Badge>
       <CardDescription>{t('supportCustomer.websiteHint')}</CardDescription>
+      {workspace.status !== 'ready' && <SetupTimingNotice />}
       <form
         className="mt-3 grid gap-5"
         onSubmit={(event) => {

@@ -2,7 +2,6 @@ import { useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu } from 'lucide-react';
-import SectionNav from '@/navigation/SectionNav';
 import SectionShell from '@/navigation/SectionShell';
 import SectionPageHeader from '@/navigation/SectionPageHeader';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -11,6 +10,8 @@ import customerSection from '../customerSection';
 import { customerRequest } from '../api/customerApi';
 import useCustomerAction from '../hooks/useCustomerAction';
 import CustomerError from './customerError';
+import CustomerNavigation from './customerNavigation';
+import CustomerBetaNotice from './customerBetaNotice';
 
 /** Reuses DocsGPT section navigation, page frame and accessible mobile sheet for the restricted customer routes. */
 export default function CustomerFrame({ children }: { children: ReactNode }) {
@@ -22,13 +23,8 @@ export default function CustomerFrame({ children }: { children: ReactNode }) {
     customerSection.groups[0].items.find((item) => pathname === item.path) ??
     null;
   const navigation = (
-    <SectionNav
-      section={customerSection}
+    <CustomerNavigation
       activeItemKey={item?.key}
-      isAdmin={false}
-      itemSize="touch"
-      onBack={() => window.location.assign('/')}
-      backLabel={t('supportCustomer.home')}
       onNavigate={() => setOpen(false)}
     />
   );
@@ -82,6 +78,7 @@ export default function CustomerFrame({ children }: { children: ReactNode }) {
               </Button>
             </div>
             <CustomerError message={action.error} />
+            <CustomerBetaNotice />
             {children}
           </SectionShell>
         </main>

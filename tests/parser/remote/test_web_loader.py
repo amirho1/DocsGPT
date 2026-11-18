@@ -43,19 +43,21 @@ class TestWebLoaderHeaders:
     """Test WebLoader headers configuration."""
 
     def test_headers_defined(self):
+        """The crawler sends content preferences without inventing a referrer."""
         assert isinstance(headers, dict)
         assert "User-Agent" in headers
         assert "Accept" in headers
         assert "Accept-Language" in headers
-        assert "Referer" in headers
+        assert "Referer" not in headers
         assert "DNT" in headers
         assert "Connection" in headers
         assert "Upgrade-Insecure-Requests" in headers
 
     def test_headers_values(self):
-        assert headers["User-Agent"] == "Mozilla/5.0"
+        """All web loaders identify the service with the same honest user agent."""
+        assert headers["User-Agent"] == "DocsGPT/1.0"
         assert "text/html" in headers["Accept"]
-        assert headers["Referer"] == "https://www.google.com/"
+        assert "Referer" not in headers
         assert headers["DNT"] == "1"
         assert headers["Connection"] == "keep-alive"
 

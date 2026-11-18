@@ -1321,9 +1321,8 @@ class TestBoundedFetching:
         assert robots_cap <= 512 * 1024
         assert fake.limits["https://x.io/sitemap.xml"] == (MAX_SITEMAP_BYTES, False)
 
-    def test_every_fetch_sends_the_same_browser_headers(self, web):
-        # Sites that refuse python-requests' User-Agent refused the crawl and
-        # sitemap fetches while serving the page entries.
+    def test_every_fetch_sends_the_same_crawler_headers(self, web) -> None:
+        """Page, crawl and sitemap requests all identify DocsGPT consistently."""
 
         fake = web({
             "https://x.io/robots.txt": robots("https://x.io/sitemap.xml"),
@@ -1341,7 +1340,8 @@ class TestBoundedFetching:
 
         assert {"https://z.io/page", "https://x.io/robots.txt", "https://x.io/p", "https://y.io/a"} <= set(fake.headers)
         assert all(sent == PAGE_HEADERS for sent in fake.headers.values())
-        assert PAGE_HEADERS["User-Agent"].startswith("Mozilla/")
+        assert PAGE_HEADERS["User-Agent"].startswith("DocsGPT/")
+        assert "Referer" not in PAGE_HEADERS
 
     def test_an_oversized_sitemap_is_skipped(self, web):
         with patch("docsgpt.parser.remote.sitemap_loader.MAX_SITEMAP_BYTES", 50):

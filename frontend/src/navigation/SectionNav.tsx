@@ -13,6 +13,8 @@ import { useSidebarLevel } from './SidebarLevelProvider';
 
 type SectionNavProps = {
   section: Section;
+  /** Larger targets for customer-facing touch navigation. */
+  itemSize?: 'default' | 'touch';
   /** Key of the item matching the current route, from ``getActiveItem``. */
   activeItemKey?: string;
   isAdmin: boolean;
@@ -31,6 +33,7 @@ type SectionNavProps = {
  */
 export default function SectionNav({
   section,
+  itemSize = 'default',
   activeItemKey,
   isAdmin,
   onBack,
@@ -54,6 +57,7 @@ export default function SectionNav({
       <Button
         key={item.key}
         variant="sidebar-item"
+        size={itemSize}
         asChild
         className="mx-4 my-1 flex"
       >
@@ -83,6 +87,7 @@ export default function SectionNav({
       <Button
         type="button"
         variant="sidebar-item"
+        size={itemSize}
         onClick={onBack}
         className="mx-4 mt-4 flex shrink-0"
       >

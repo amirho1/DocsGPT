@@ -1,0 +1,10 @@
+/* Customer entry uses the host's licensed Persian font; upstream theme tokens remain intact. */
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/Vazirmatn-VariableFont_wght.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+:root {
+  --font-sans: 'Vazirmatn', sans-serif;
+}

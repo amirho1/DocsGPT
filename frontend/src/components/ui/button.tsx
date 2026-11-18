@@ -12,6 +12,8 @@ const buttonVariantOptions = {
   // font-normal) wins over the size's font-medium. Type lives on the
   // size, not the base, so size="text" can inherit it.
   size: {
+    touch:
+      'min-h-11 h-auto gap-2 px-4 py-3 text-sm font-medium whitespace-normal',
     xs: "h-7 gap-1 px-2 text-xs font-medium has-[>svg,>[data-slot=button-label]>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3.5",
     sm: 'h-8 gap-1.5 px-3 text-sm font-medium has-[>svg,>[data-slot=button-label]>svg]:px-2.5',
     default:

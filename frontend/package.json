@@ -18,7 +18,8 @@
     "format": "prettier ./src --write",
     "locale:sort": "node scripts/sort-locales.mjs",
     "locale:check": "node scripts/sort-locales.mjs --check",
-    "prepare": "cd .. && husky install frontend/.husky"
+    "prepare": "cd .. && husky install frontend/.husky",
+    "build:customer": "tsc && vite build --config vite.customer.config.ts"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

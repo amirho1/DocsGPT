@@ -2217,3 +2217,10 @@ messages) are tested against the real config in
 a selector there, with a test and a line here. Add a variant or token only when a treatment
 is used in more than one place and none of the existing ones fits; a single
 special case gets a disable comment with a reason.
+
+## Customer touch controls
+
+The customer entry uses `Button size="touch"` (at least 44px with wrapping) and
+`Input size="touch"` (48px, 16px text). These sizes leave the management defaults
+unchanged. `SectionNav itemSize="touch"` applies the same targets to customer
+navigation. The Button gallery derives its touch column from the shared variants.

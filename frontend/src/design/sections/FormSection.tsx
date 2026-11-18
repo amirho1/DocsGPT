@@ -64,7 +64,10 @@ export default function FormSection() {
       title="Forms"
       intro="Inputs and selects share the 38px form-row height (Input default; SelectTrigger and Button size field), the sm density and the pill shape. Every form field is labelled by a floating label (FormField, or the Input label shorthand)."
     >
-      <Example title="Input sizes" code='<Input size="sm" | "default">'>
+      <Example
+        title="Input sizes"
+        code='<Input size="sm" | "default" | "touch">'
+      >
         <div className="grid gap-4 md:grid-cols-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="in-sm">Small</Label>
@@ -73,6 +76,10 @@ export default function FormSection() {
           <div className="flex flex-col gap-2">
             <Label htmlFor="in-md">Default (38px form row)</Label>
             <Input id="in-md" placeholder="Agent name" />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="in-touch">Touch (48px, 16px text)</Label>
+            <Input id="in-touch" size="touch" placeholder="Website URL" />
           </div>
         </div>
       </Example>

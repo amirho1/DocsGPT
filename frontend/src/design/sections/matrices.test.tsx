@@ -57,7 +57,14 @@ describe('gallery matrices follow the cva config', () => {
     expect(buttonVariantNames).toEqual(
       expect.arrayContaining(['default', 'link', 'sidebar-item', 'combobox']),
     );
-    expect(MATRIX_SIZES).toEqual(['xs', 'sm', 'default', 'lg', 'field']);
+    expect(MATRIX_SIZES).toEqual([
+      'touch',
+      'xs',
+      'sm',
+      'default',
+      'lg',
+      'field',
+    ]);
   });
 
   it('shows one Badge per exported variant', async () => {

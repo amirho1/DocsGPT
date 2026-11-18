@@ -12,6 +12,7 @@ const inputVariants = cva(
   {
     variants: {
       size: {
+        touch: 'h-12 px-3 py-2 text-base',
         default: 'h-9.5 px-3 py-1.5 text-base md:text-sm',
         sm: 'h-8 px-2 py-1 text-sm',
       },
@@ -57,6 +58,7 @@ const LABEL_RESTING_CLASSES: Record<
   NonNullable<VariantProps<typeof inputVariants>['size']>,
   string
 > = {
+  touch: 'peer-placeholder-shown:top-3 peer-placeholder-shown:text-base',
   default:
     'peer-placeholder-shown:top-2 peer-placeholder-shown:text-base md:peer-placeholder-shown:text-sm md:peer-focus:text-xs',
   sm: 'peer-placeholder-shown:top-1.5 peer-placeholder-shown:text-sm',

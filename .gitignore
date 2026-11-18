@@ -224,3 +224,6 @@ dist/
 # Personal agent exports/imports kept at the repo root (may hold chat ids,
 # webhook targets and other per-user config)
 /*.agent.yaml
+
+# Customer build is packaged from a pinned source revision.
+/frontend/dist-customer/

@@ -65,7 +65,7 @@ export function BackLink({
         className,
       )}
     >
-      <ArrowLeft className="size-4 shrink-0" aria-hidden />
+      <ArrowLeft className="size-4 shrink-0 rtl:rotate-180" aria-hidden />
       {children}
     </Link>
   );

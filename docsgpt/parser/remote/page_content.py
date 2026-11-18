@@ -52,13 +52,12 @@ def page_fetch_bytes() -> int:
     return cap + 1 if cap > 0 else _PAGE_CEILING_BYTES
 
 
-# The request headers of every web fetch (pages, links, robots.txt,
-# sitemaps): some sites refuse python-requests' User-Agent.
+# Identify every web fetch honestly. An incomplete browser User-Agent can
+# trigger HTTP 406, and crawls do not originate from a Google search.
 PAGE_HEADERS: Dict[str, str] = {
-    "User-Agent": "Mozilla/5.0",
+    "User-Agent": "DocsGPT/1.0",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.5",
-    "Referer": "https://www.google.com/",
     "DNT": "1",
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1",

@@ -673,6 +673,17 @@ class TestFetchPageRedirects:
 
         assert response.url == "https://x.io/docs"
 
+    def test_identifies_the_crawler_without_fabricating_a_referrer(self) -> None:
+        """Sites rejecting an incomplete browser identity must receive an honest crawler identity."""
+        hops = _Hops({"https://x.io/docs": self.PAGE})
+        with patch("docsgpt.parser.remote.page_content.pinned_fetch_bytes", side_effect=hops) as fetch:
+            response = fetch_page("https://x.io/docs")
+
+        headers = fetch.call_args.kwargs["headers"]
+        assert headers["User-Agent"].startswith("DocsGPT/")
+        assert "Referer" not in headers
+        assert response.status_code == 200
+
     def test_an_address_with_credentials_is_not_fetched(self):
         # The fetcher would send them as Basic auth, and the page's source
         # (shown in citations) would carry the password.

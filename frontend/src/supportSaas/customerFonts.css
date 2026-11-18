@@ -7,4 +7,5 @@
 }
 :root {
   --font-sans: 'Vazirmatn', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
